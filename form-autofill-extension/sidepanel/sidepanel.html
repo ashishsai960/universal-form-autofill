@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Auto-Fill Assistant</title>
+  <link rel="stylesheet" href="sidepanel.css" />
+</head>
+<body>
+  <header class="topbar">
+    <h1>Auto-Fill Assistant</h1>
+    <button id="settingsBtn" class="icon-btn" title="Open profile settings" aria-label="Settings">⚙</button>
+  </header>
+
+  <div class="actions">
+    <button id="fillSelectedBtn" class="primary-btn">Fill Selected</button>
+    <button id="refreshBtn" class="ghost-btn" title="Re-scan this page">Refresh</button>
+  </div>
+
+  <div id="status" class="status"></div>
+
+  <main id="content">
+    <section id="matchedSection">
+      <h2>Matched Fields</h2>
+      <div id="matchedList" class="field-list"></div>
+    </section>
+
+    <section id="unmatchedSection" hidden>
+      <h2>Unmatched — click to link to a profile field</h2>
+      <div id="unmatchedList" class="field-list"></div>
+    </section>
+  </main>
+
+  <script src="sidepanel.js"></script>
+</body>
+</html>

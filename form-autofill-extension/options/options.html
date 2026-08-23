@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Auto-Fill Assistant — Profile Settings</title>
+  <link rel="stylesheet" href="options.css" />
+</head>
+<body>
+  <header class="page-header">
+    <h1>Profile Settings</h1>
+    <p>These values are stored only on this device (<code>chrome.storage.local</code>) and are used to fill matching form fields.</p>
+  </header>
+
+  <main>
+    <section class="card">
+      <h2>Add a Field</h2>
+      <form id="addForm" class="field-form">
+        <div class="form-row">
+          <label>Label
+            <input type="text" id="newLabel" placeholder="e.g. Twitter URL" required />
+          </label>
+          <label>Category
+            <select id="newCategory">
+              <option value="identity">Identity</option>
+              <option value="professional">Professional</option>
+              <option value="documents">Documents</option>
+              <option value="custom" selected>Custom</option>
+            </select>
+          </label>
+        </div>
+        <label>Value
+          <input type="text" id="newValue" placeholder="e.g. https://twitter.com/yourhandle" />
+        </label>
+        <label>Keywords (comma-separated, used for matching)
+          <input type="text" id="newKeywords" placeholder="e.g. twitter, x profile, social" />
+        </label>
+        <label class="checkbox-row">
+          <input type="checkbox" id="newSensitive" />
+          Sensitive — never include in bulk "Fill Selected" / "Fill All"
+        </label>
+        <button type="submit" class="primary-btn">Add Field</button>
+      </form>
+    </section>
+
+    <section id="fieldGroups"></section>
+  </main>
+
+  <script src="options.js"></script>
+</body>
+</html>
