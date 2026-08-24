@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy Policy — FormPilot</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      font-size: 16px;
+      line-height: 1.7;
+      color: #1a1a2e;
+      background: #f8f9fc;
+      padding: 40px 20px 80px;
+    }
+
+    .container {
+      max-width: 760px;
+      margin: 0 auto;
+      background: #ffffff;
+      border-radius: 12px;
+      border: 1px solid #e2e8f0;
+      padding: 56px 64px;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+    }
+
+    /* Header */
+    .page-header {
+      margin-bottom: 48px;
+      padding-bottom: 32px;
+      border-bottom: 1px solid #e2e8f0;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 24px;
+    }
+
+    .brand-icon {
+      width: 36px;
+      height: 36px;
+      background: linear-gradient(135deg, #4f46e5, #7c3aed);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+    }
+
+    .brand-name {
+      font-size: 18px;
+      font-weight: 600;
+      color: #1a1a2e;
+    }
+
+    h1 {
+      font-size: 28px;
+      font-weight: 700;
+      color: #1a1a2e;
+      letter-spacing: -0.3px;
+      margin-bottom: 8px;
+    }
+
+    .meta {
+      font-size: 14px;
+      color: #6b7280;
+    }
+
+    /* Sections */
+    section {
+      margin-bottom: 40px;
+    }
+
+    h2 {
+      font-size: 18px;
+      font-weight: 600;
+      color: #1a1a2e;
+      margin-bottom: 12px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid #ede9fe;
+    }
+
+    p {
+      color: #374151;
+      margin-bottom: 12px;
+    }
+
+    p:last-child {
+      margin-bottom: 0;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 12px 0 0;
+    }
+
+    ul li {
+      position: relative;
+      padding-left: 20px;
+      margin-bottom: 8px;
+      color: #374151;
+    }
+
+    ul li::before {
+      content: "•";
+      position: absolute;
+      left: 0;
+      color: #7c3aed;
+      font-weight: 700;
+    }
+
+    /* Permission table */
+    .permissions {
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      overflow: hidden;
+      margin-top: 16px;
+    }
+
+    .permission-row {
+      display: grid;
+      grid-template-columns: 160px 1fr;
+      border-bottom: 1px solid #e2e8f0;
+    }
+
+    .permission-row:last-child {
+      border-bottom: none;
+    }
+
+    .permission-name {
+      background: #f5f3ff;
+      padding: 14px 16px;
+      font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+      font-size: 13px;
+      font-weight: 600;
+      color: #5b21b6;
+      display: flex;
+      align-items: flex-start;
+      border-right: 1px solid #e2e8f0;
+    }
+
+    .permission-desc {
+      padding: 14px 16px;
+      font-size: 15px;
+      color: #374151;
+      line-height: 1.6;
+    }
+
+    /* Highlight box */
+    .callout {
+      background: #f5f3ff;
+      border-left: 3px solid #7c3aed;
+      border-radius: 0 8px 8px 0;
+      padding: 14px 18px;
+      margin: 16px 0;
+      color: #374151;
+      font-size: 15px;
+    }
+
+    /* Contact */
+    .contact-email {
+      display: inline-block;
+      color: #4f46e5;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .contact-email:hover {
+      text-decoration: underline;
+    }
+
+    /* Footer */
+    .page-footer {
+      margin-top: 48px;
+      padding-top: 24px;
+      border-top: 1px solid #e2e8f0;
+      font-size: 13px;
+      color: #9ca3af;
+      text-align: center;
+    }
+
+    @media (max-width: 640px) {
+      .container {
+        padding: 32px 24px;
+      }
+
+      .permission-row {
+        grid-template-columns: 1fr;
+      }
+
+      .permission-name {
+        border-right: none;
+        border-bottom: 1px solid #e2e8f0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <header class="page-header">
+      <div class="brand">
+        <div class="brand-icon">F</div>
+        <span class="brand-name">FormPilot</span>
+      </div>
+      <h1>Privacy Policy</h1>
+      <p class="meta">Last updated: August 25, 2026</p>
+    </header>
+
+    <!-- 1. Introduction -->
+    <section>
+      <h2>Introduction</h2>
+      <p>
+        FormPilot (Universal Form Auto-Fill Assistant) is a Chrome extension that helps you fill out
+        web forms faster by matching form fields against a personal profile you create and manage
+        yourself. Our core privacy commitment is simple: <strong>your data never leaves your
+        device.</strong> We have no servers, no databases, and no way to see anything you store in
+        the extension.
+      </p>
+    </section>
+
+    <!-- 2. What We Collect -->
+    <section>
+      <h2>What Information We Collect</h2>
+      <p>
+        FormPilot only stores what <em>you choose to enter</em> into your profile. That may include:
+      </p>
+      <ul>
+        <li>Full name</li>
+        <li>Email address</li>
+        <li>Phone number</li>
+        <li>LinkedIn profile URL</li>
+        <li>GitHub profile URL</li>
+        <li>Resume or portfolio link</li>
+        <li>Any custom fields you add yourself</li>
+      </ul>
+      <p style="margin-top: 12px;">
+        We do not collect any information automatically. Nothing is collected passively in the
+        background, and nothing is collected unless you explicitly type it into your profile.
+      </p>
+    </section>
+
+    <!-- 3. How Data Is Stored -->
+    <section>
+      <h2>How Your Data Is Stored</h2>
+      <p>
+        All profile data is stored exclusively using <code>chrome.storage.local</code> — a built-in
+        browser storage mechanism that keeps data on your device only, inside your Chrome browser
+        profile.
+      </p>
+      <div class="callout">
+        There is no backend server, no cloud database, and no third-party storage service involved.
+        Your profile data is never uploaded anywhere.
+      </div>
+      <p>
+        Only you can access this data through the extension. Mervix Technology has no technical
+        ability to read, access, or retrieve it.
+      </p>
+    </section>
+
+    <!-- 4. What We Access on Web Pages -->
+    <section>
+      <h2>What We Access on Web Pages</h2>
+      <p>
+        To fill forms, FormPilot's content script runs on pages you visit and looks for form fields
+        (e.g., fields labelled "Name", "Email", "Phone"). It reads only the <strong>labels and
+        types</strong> of those fields in order to match them against your saved profile.
+      </p>
+      <p>To be completely clear about what the extension does <em>not</em> do:</p>
+      <ul>
+        <li>It does <strong>not</strong> read or capture password fields.</li>
+        <li>It does <strong>not</strong> log or store your browsing history.</li>
+        <li>It does <strong>not</strong> read the general page content — only form field metadata.</li>
+        <li>It does <strong>not</strong> capture, transmit, or record anything about pages you visit.</li>
+        <li>It does <strong>not</strong> monitor your activity outside of form-fill interactions.</li>
+      </ul>
+      <p style="margin-top: 12px;">
+        The extension's fill logic is triggered on demand — it does not silently run in the
+        background or observe your general browsing activity.
+      </p>
+    </section>
+
+    <!-- 5. Data Sharing -->
+    <section>
+      <h2>Data Sharing</h2>
+      <div class="callout">
+        We do not sell, share, rent, or transmit your data to any third party — ever.
+      </div>
+      <p>
+        FormPilot does not use analytics services, advertising networks, tracking pixels, or any
+        third-party scripts. There is no code in the extension that communicates with an external
+        server of any kind.
+      </p>
+    </section>
+
+    <!-- 6. Data Retention & Deletion -->
+    <section>
+      <h2>Data Retention &amp; Deletion</h2>
+      <p>
+        Your profile data is kept in local browser storage until you choose to remove it. You have
+        two straightforward ways to delete everything:
+      </p>
+      <ul>
+        <li>
+          <strong>Clear from the extension:</strong> Open the extension's options/settings page and
+          use the "Clear Data" (or equivalent) button. This immediately wipes all locally stored
+          profile data.
+        </li>
+        <li>
+          <strong>Uninstall the extension:</strong> Removing FormPilot from Chrome permanently
+          deletes all associated <code>chrome.storage.local</code> data. Nothing persists anywhere
+          else, so there is nothing left behind.
+        </li>
+      </ul>
+    </section>
+
+    <!-- 7. Permissions Explained -->
+    <section>
+      <h2>Permissions Explained</h2>
+      <p>
+        Chrome requires extensions to declare every permission they use. Here is exactly why
+        FormPilot requests each one:
+      </p>
+
+      <div class="permissions">
+        <div class="permission-row">
+          <div class="permission-name">storage</div>
+          <div class="permission-desc">
+            Allows the extension to save your profile data locally in your browser using
+            <code>chrome.storage.local</code>. Without this permission, your profile could not be
+            saved between sessions.
+          </div>
+        </div>
+        <div class="permission-row">
+          <div class="permission-name">sidePanel</div>
+          <div class="permission-desc">
+            Allows the extension to display its side panel UI — the panel that shows you which
+            form fields were detected and lets you trigger the auto-fill.
+          </div>
+        </div>
+        <div class="permission-row">
+          <div class="permission-name">host_permissions<br>&lt;all_urls&gt;</div>
+          <div class="permission-desc">
+            Required so the content script can run on any website where you want to fill a form.
+            Forms appear on countless different domains, so the extension needs broad permission to
+            be available wherever you need it. This permission grants the ability to <em>read form
+            field labels</em> on a page — it is not used to read any other page content, and
+            nothing is sent anywhere.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 8. Children's Privacy -->
+    <section>
+      <h2>Children's Privacy</h2>
+      <p>
+        FormPilot is not directed at children under the age of 13, and we do not knowingly collect
+        any personal information from children. If you believe a child has provided personal
+        information through the extension, please contact us at the email below and we will take
+        steps to address it — though in practice, since all data is local-only, deleting it is as
+        simple as uninstalling the extension.
+      </p>
+    </section>
+
+    <!-- 9. Changes to This Policy -->
+    <section>
+      <h2>Changes to This Policy</h2>
+      <p>
+        If we update this privacy policy, the revised version will be posted at this same URL with
+        an updated "Last updated" date at the top. We encourage you to review it periodically. Since
+        FormPilot does not collect contact information from users, we cannot notify you directly of
+        changes, but the Chrome Web Store listing will reference the current policy URL.
+      </p>
+    </section>
+
+    <!-- 10. Contact -->
+    <section>
+      <h2>Contact Us</h2>
+      <p>
+        If you have any questions or concerns about this privacy policy or how FormPilot handles
+        data, please reach out:
+      </p>
+      <p>
+        <strong>Mervix Technology</strong><br />
+        <a class="contact-email" href="mailto:ashish@mervixtechnology.com">ashish@mervixtechnology.com</a>
+      </p>
+    </section>
+
+    <footer class="page-footer">
+      &copy; 2026 Mervix Technology. FormPilot — Universal Form Auto-Fill Assistant.
+    </footer>
+
+  </div>
+</body>
+</html>
