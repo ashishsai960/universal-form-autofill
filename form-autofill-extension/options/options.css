@@ -96,37 +96,36 @@ input[type="text"], select {
   background: #ffffff;
   border: 1px solid #e4e6eb;
   border-radius: 8px;
-  padding: 12px 14px;
+  padding: 10px 14px;
   margin-bottom: 8px;
 }
 
-.field-card-view {
+.field-row-main {
   display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
+  align-items: center;
   gap: 10px;
 }
 
-.field-card-info { min-width: 0; flex: 1; }
-.field-card-label { font-weight: 600; font-size: 13.5px; }
-.field-card-value {
-  font-size: 12.5px;
-  color: #4a5063;
-  margin-top: 3px;
-  word-break: break-word;
+.field-label {
+  width: 150px;
+  flex-shrink: 0;
+  font-weight: 600;
+  font-size: 13px;
+  color: #333;
 }
-.field-card-keywords {
-  font-size: 11px;
-  color: #9aa0af;
-  margin-top: 3px;
+
+.value-input {
+  flex: 1;
+  min-width: 0;
 }
+
 .field-card-badge {
   font-size: 10px;
   color: #a06a1f;
   background: #ffedcf;
   border-radius: 4px;
   padding: 1px 5px;
-  margin-left: 6px;
+  margin-left: 4px;
 }
 
 .field-card-actions {
@@ -142,18 +141,37 @@ input[type="text"], select {
   padding: 5px 10px;
   font-size: 12px;
   cursor: pointer;
+  flex-shrink: 0;
 }
 .small-btn:hover { background: #eef0f4; }
 .small-btn.danger { color: #b3261e; border-color: #f2c4c0; }
 .small-btn.danger:hover { background: #fdeceb; }
 
-.field-edit-form {
+.advanced-toggle {
+  font-weight: 700;
+  color: #7a8093;
+  letter-spacing: 1px;
+}
+
+.field-advanced {
   display: flex;
   flex-direction: column;
   gap: 8px;
   margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px dashed #e4e6eb;
 }
-.field-edit-form .form-row { display: flex; gap: 10px; }
-.field-edit-form .form-row label { flex: 1; }
+.field-advanced .form-row { display: flex; gap: 10px; }
+.field-advanced .form-row label { flex: 1; }
+
+.add-card summary {
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 13.5px;
+  color: #4a5063;
+  padding: 4px 0;
+}
+.add-card[open] summary { margin-bottom: 12px; }
+.add-card .field-form { margin-top: 4px; }
 
 .empty-note { color: #8b91a1; font-size: 13px; }

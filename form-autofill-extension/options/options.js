@@ -41,27 +41,31 @@ function categoryOptionsHtml(selected) {
   ).join('');
 }
 
+// Debounces value autosave per field so fast typing doesn't hammer storage.
+const saveTimers = new Map();
+function scheduleSave(fieldId) {
+  clearTimeout(saveTimers.get(fieldId));
+  saveTimers.set(
+    fieldId,
+    setTimeout(() => saveFields(), 400)
+  );
+}
+
 function renderFieldCard(field) {
   const card = document.createElement('div');
   card.className = 'field-card';
   card.dataset.id = field.id;
 
   card.innerHTML = `
-    <div class="field-card-view">
-      <div class="field-card-info">
-        <div class="field-card-label">
-          ${escapeHtml(field.label)}
-          ${field.sensitive ? '<span class="field-card-badge">sensitive</span>' : ''}
-        </div>
-        <div class="field-card-value">${field.value ? escapeHtml(field.value) : '<em>not set</em>'}</div>
-        <div class="field-card-keywords">Keywords: ${escapeHtml((field.keywords || []).join(', ')) || '—'}</div>
-      </div>
-      <div class="field-card-actions">
-        <button class="small-btn edit-btn">Edit</button>
-        <button class="small-btn danger delete-btn">Delete</button>
-      </div>
+    <div class="field-row-main">
+      <label class="field-label" for="value-${field.id}">
+        ${escapeHtml(field.label)}
+        ${field.sensitive ? '<span class="field-card-badge">sensitive</span>' : ''}
+      </label>
+      <input type="text" id="value-${field.id}" class="value-input" value="${escapeHtml(field.value)}" placeholder="Enter value…" />
+      <button type="button" class="small-btn advanced-toggle" title="Advanced options">⋯</button>
     </div>
-    <form class="field-edit-form" hidden>
+    <div class="field-advanced" hidden>
       <div class="form-row">
         <label>Label
           <input type="text" class="edit-label" value="${escapeHtml(field.label)}" required />
@@ -70,10 +74,7 @@ function renderFieldCard(field) {
           <select class="edit-category">${categoryOptionsHtml(field.category)}</select>
         </label>
       </div>
-      <label>Value
-        <input type="text" class="edit-value" value="${escapeHtml(field.value)}" />
-      </label>
-      <label>Keywords (comma-separated)
+      <label>Keywords (comma-separated, used for matching)
         <input type="text" class="edit-keywords" value="${escapeHtml((field.keywords || []).join(', '))}" />
       </label>
       <label class="checkbox-row">
@@ -81,41 +82,49 @@ function renderFieldCard(field) {
         Sensitive — never include in bulk fill
       </label>
       <div class="field-card-actions">
-        <button type="submit" class="small-btn">Save</button>
-        <button type="button" class="small-btn cancel-btn">Cancel</button>
+        <button type="button" class="small-btn danger delete-btn">Delete field</button>
       </div>
-    </form>
+    </div>
   `;
 
-  const viewEl = card.querySelector('.field-card-view');
-  const formEl = card.querySelector('.field-edit-form');
+  const valueInput = card.querySelector('.value-input');
+  const advancedPanel = card.querySelector('.field-advanced');
+  const labelInput = card.querySelector('.edit-label');
+  const categorySelect = card.querySelector('.edit-category');
+  const keywordsInput = card.querySelector('.edit-keywords');
+  const sensitiveCheckbox = card.querySelector('.edit-sensitive');
 
-  card.querySelector('.edit-btn').addEventListener('click', () => {
-    viewEl.hidden = true;
-    formEl.hidden = false;
+  valueInput.addEventListener('input', () => {
+    field.value = valueInput.value;
+    scheduleSave(field.id);
   });
 
-  card.querySelector('.cancel-btn').addEventListener('click', () => {
-    viewEl.hidden = false;
-    formEl.hidden = true;
+  card.querySelector('.advanced-toggle').addEventListener('click', () => {
+    advancedPanel.hidden = !advancedPanel.hidden;
+  });
+
+  labelInput.addEventListener('input', () => {
+    field.label = labelInput.value;
+    scheduleSave(field.id);
+  });
+  categorySelect.addEventListener('change', async () => {
+    field.category = categorySelect.value;
+    await saveFields();
+    render();
+  });
+  keywordsInput.addEventListener('input', () => {
+    field.keywords = parseKeywords(keywordsInput.value);
+    scheduleSave(field.id);
+  });
+  sensitiveCheckbox.addEventListener('change', async () => {
+    field.sensitive = sensitiveCheckbox.checked;
+    await saveFields();
+    render();
   });
 
   card.querySelector('.delete-btn').addEventListener('click', async () => {
     if (!confirm(`Delete "${field.label}"?`)) return;
     fields = fields.filter((f) => f.id !== field.id);
-    await saveFields();
-    render();
-  });
-
-  formEl.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const target = fields.find((f) => f.id === field.id);
-    if (!target) return;
-    target.label = formEl.querySelector('.edit-label').value.trim();
-    target.category = formEl.querySelector('.edit-category').value;
-    target.value = formEl.querySelector('.edit-value').value;
-    target.keywords = parseKeywords(formEl.querySelector('.edit-keywords').value);
-    target.sensitive = formEl.querySelector('.edit-sensitive').checked;
     await saveFields();
     render();
   });
@@ -147,9 +156,7 @@ function render() {
     section.className = 'category-group';
     section.innerHTML = `<h2>${escapeHtml(CATEGORY_LABELS[category] || category)}</h2>`;
 
-    group
-      .sort((a, b) => a.label.localeCompare(b.label))
-      .forEach((field) => section.appendChild(renderFieldCard(field)));
+    group.forEach((field) => section.appendChild(renderFieldCard(field)));
 
     fieldGroupsEl.appendChild(section);
   }

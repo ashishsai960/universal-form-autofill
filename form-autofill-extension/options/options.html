@@ -8,12 +8,14 @@
 <body>
   <header class="page-header">
     <h1>Profile Settings</h1>
-    <p>These values are stored only on this device (<code>chrome.storage.local</code>) and are used to fill matching form fields.</p>
+    <p>Type your info into the fields below — everything saves automatically to this device.</p>
   </header>
 
   <main>
-    <section class="card">
-      <h2>Add a Field</h2>
+    <section id="fieldGroups"></section>
+
+    <details class="card add-card">
+      <summary>+ Add a custom field</summary>
       <form id="addForm" class="field-form">
         <div class="form-row">
           <label>Label
@@ -40,9 +42,7 @@
         </label>
         <button type="submit" class="primary-btn">Add Field</button>
       </form>
-    </section>
-
-    <section id="fieldGroups"></section>
+    </details>
   </main>
 
   <script src="options.js"></script>
